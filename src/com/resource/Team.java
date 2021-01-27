@@ -87,5 +87,12 @@ public class Team implements Comparable<Team>{
 		
 		return this.teamName.compareTo(o.teamName);
 	}
+	public int totalRuns() {
+		int total=0;
+		for(Player p:players) {
+			total+=p.getRun();
+		}
+		return total;
+	}
 
 }

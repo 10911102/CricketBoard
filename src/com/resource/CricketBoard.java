@@ -75,6 +75,7 @@ public class CricketBoard {
 
 	/**
 	 * shows the list of team sorted by time of team created.
+	 * 
 	 * @param date false parameter for overloading method
 	 */
 	public static void showTeams(Calendar date) {
@@ -128,13 +129,93 @@ public class CricketBoard {
 			System.out.println(++i + "  " + t.getTeamName() + "  No. of players : " + t.getPlayers().size());
 		}
 	}
+
 	/**
-	 * Displays the total number of teams 
+	 * Displays the total number of teams
 	 * 
 	 */
 	public static void showTotalTeams() {
-		System.out.println("Number of teams : "+teams.size());
-		
+		System.out.println("Number of teams : " + teams.size());
+
+	}
+
+	/**
+	 * Returns the object Team if team is present else it will return null
+	 * 
+	 * @param team String to search team name
+	 * @return Object of Team or null
+	 */
+	public static Team searchTeam(String team) {
+		for (Team t : teams) {
+			if (t.getTeamName().equalsIgnoreCase(team)) {
+				return t;
+			}
+		}
+		System.out.println("Try another name!!");
+		return null;
+	}
+
+	/**
+	 * Returns the object Player if player is present or it will return null
+	 * 
+	 * @param team String to search player name
+	 * @return Object of Player or null
+	 */
+	public static Player searchPlayer(String string) {
+		for (Team t : teams) {
+			for (Player p : t.getPlayers()) {
+				if (p.getName().equalsIgnoreCase(string)) {
+					System.out.println("Player Found");
+					return p;
+				}
+			}
+		}
+		System.out.println("Try another name!!");
+		return null;
+	}
+
+	/**
+	 * shows the given string is Team or Player
+	 * 
+	 * @param team String to search name
+	 */
+	public static void search(String team) {
+		for (Team t : teams) {
+			if (t.getTeamName().equalsIgnoreCase(team)) {
+				System.out.println("Team " + team + " found.");
+				break;
+			} else {
+				Player p = new Player(team);
+				if (t.getPlayers().contains(p)) {
+					System.out.println("Player " + team + " Found in team " + t.getTeamName());
+					break;
+				}
+				System.out.println("Try another name!!");
+			}
+		}
+	}
+
+	/**
+	 * Total runs scored by team
+	 * 
+	 * @param team name of the team
+	 * @return total runs
+	 */
+	public static int getRuns(String team) {
+		return searchTeam(team).totalRuns();
+	}
+	
+	/**
+	 * Shows the match result 
+	 * @param team1 first team name
+	 * @param team2 second team name
+	 */
+	public static void matchResult(String team1,String team2) {
+		if (getRuns(team1) < getRuns(team2)) {
+			System.out.println(team2+" won by " + (getRuns(team2) - getRuns(team1)) + " runs");
+		} else {
+			System.out.println(team1+" won by " + (getRuns(team1) - getRuns(team2)) + " runs");
+		}
 	}
 
 }

@@ -39,7 +39,11 @@ public class DriverCode {
 		CricketBoard.showTeam("India");
 		CricketBoard.showTeams(1);
 		CricketBoard.showTotalTeams();
-		
+		CricketBoard.search("Harbhajan");
+		CricketBoard.searchTeam("Harbhajan");
+		CricketBoard.searchPlayer("Harbhajan");
+		System.out.println();
+		CricketBoard.matchResult("india","australia");
 		
 		
 	}

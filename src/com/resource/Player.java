@@ -6,9 +6,16 @@ package com.resource;
  */
 public class Player implements Comparable<Player> {
 	private String name;
+	private int run;
 
 	public Player(String name) {
 		this.name = name;
+		this.run = (int) (Math.random() * 100);
+	}
+
+	public Player(String name, int run) {
+		this.name = name;
+		this.run = run;
 	}
 
 	/**
@@ -23,6 +30,20 @@ public class Player implements Comparable<Player> {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the run
+	 */
+	public int getRun() {
+		return run;
+	}
+
+	/**
+	 * @param run the run to set
+	 */
+	public void setRun(int run) {
+		this.run = run;
 	}
 
 	@Override
