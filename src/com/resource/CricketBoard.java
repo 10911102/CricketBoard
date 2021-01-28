@@ -20,12 +20,13 @@ public class CricketBoard {
 	 * Add new team
 	 * 
 	 * @param name    for new team
-	 * @param players set of players
+	 * @param players <a href="https://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html">TreeSet</a> of players
 	 * @return true if new team created successfully
 	 */
 	public static boolean addTeam(String name, TreeSet<Player> players) {
 		Team t = new Team(name, players);
 		teams.add(t);
+		Player.setPlaying(1);
 		return true;
 	}
 
@@ -52,7 +53,7 @@ public class CricketBoard {
 	/**
 	 * Add player in existing set of players
 	 * 
-	 * @param players existing set of players
+	 * @param players existing <a href="https://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html">TreeSet</a> of players
 	 * @param player  new object to add in set
 	 * @return true if new player added successfully
 	 */
@@ -142,12 +143,12 @@ public class CricketBoard {
 	/**
 	 * Returns the object Team if team is present else it will return null
 	 * 
-	 * @param team String to search team name
+	 * @param string String to search team name
 	 * @return Object of Team or null
 	 */
-	public static Team searchTeam(String team) {
+	public static Team searchTeam(String string) {
 		for (Team t : teams) {
-			if (t.getTeamName().equalsIgnoreCase(team)) {
+			if (t.getTeamName().equalsIgnoreCase(string)) {
 				return t;
 			}
 		}
@@ -158,7 +159,7 @@ public class CricketBoard {
 	/**
 	 * Returns the object Player if player is present or it will return null
 	 * 
-	 * @param team String to search player name
+	 * @param string String to search player name
 	 * @return Object of Player or null
 	 */
 	public static Player searchPlayer(String string) {
@@ -204,6 +205,15 @@ public class CricketBoard {
 	public static int getRuns(String team) {
 		return searchTeam(team).totalRuns();
 	}
+	/**
+	 * Total Wickets gone of team
+	 * 
+	 * @param team name of the team
+	 * @return total wickets
+	 */
+	public static int getWickets(String team) {
+		return searchTeam(team).totalWickets();
+	}
 	
 	/**
 	 * Shows the match result 
@@ -217,5 +227,5 @@ public class CricketBoard {
 			System.out.println(team1+" won by " + (getRuns(team1) - getRuns(team2)) + " runs");
 		}
 	}
-
+	
 }

@@ -87,10 +87,27 @@ public class Team implements Comparable<Team>{
 		
 		return this.teamName.compareTo(o.teamName);
 	}
+	/**
+	 * Total runs of the team
+	 * @return total runs
+	 */
 	public int totalRuns() {
 		int total=0;
 		for(Player p:players) {
 			total+=p.getRun();
+		}
+		return total;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public int totalWickets() {
+		int total=0;
+		for(Player p:players) {
+			if(p.getBat()==BattingStat.PLAYED) {
+				total++;
+			}
 		}
 		return total;
 	}

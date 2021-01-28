@@ -7,10 +7,28 @@ package com.resource;
 public class Player implements Comparable<Player> {
 	private String name;
 	private int run;
+	private BattingStat bat;
+	private static int playing = 1;
+
+	public static void setPlaying(int playing) {
+		Player.playing = playing;
+	}
 
 	public Player(String name) {
 		this.name = name;
-		this.run = (int) (Math.random() * 100);
+		int key = (int) (Math.random() * 3);
+		if (key == 0) {
+			this.bat = BattingStat.PLAYED;
+			this.run = (int) (Math.random() * 100);
+		} else if (key == 1)
+			this.bat = BattingStat.NYP;
+		else if (playing <= 2) {
+			this.bat = BattingStat.PLAYING;
+			this.run = (int) (Math.random() * 100);
+			playing++;
+		} else {
+			this.bat = BattingStat.NYP;
+		}
 	}
 
 	public Player(String name, int run) {
@@ -46,6 +64,20 @@ public class Player implements Comparable<Player> {
 		this.run = run;
 	}
 
+	/**
+	 * @return the bat
+	 */
+	public BattingStat getBat() {
+		return bat;
+	}
+
+	/**
+	 * @param bat the bat to set
+	 */
+	public void setBat(BattingStat bat) {
+		this.bat = bat;
+	}
+
 	@Override
 	public int hashCode() {
 		return name.hashCode();
@@ -65,7 +97,7 @@ public class Player implements Comparable<Player> {
 
 	@Override
 	public String toString() {
-		return name;
+		return name+" Runs: "+this.run;
 	}
 
 }
