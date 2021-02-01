@@ -1,4 +1,4 @@
-package com.resource;
+package com;
 
 /**
  * @author swapnilu

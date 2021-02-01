@@ -1,4 +1,4 @@
-package com.resource;
+package com;
 
 import java.util.ArrayList;
 import java.util.Calendar;

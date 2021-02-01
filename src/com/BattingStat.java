@@ -1,4 +1,4 @@
-package com.resource;
+package com;
 
 public enum BattingStat {
 	PLAYED("Played and Out"),
