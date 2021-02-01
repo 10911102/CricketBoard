@@ -7,7 +7,7 @@ package com;
 public class Player implements Comparable<Player> {
 	private String name;
 	private int run;
-	private BattingStat bat;
+	private BattingStatus bat;
 	private static int playing = 1;
 
 	public static void setPlaying(int playing) {
@@ -18,16 +18,16 @@ public class Player implements Comparable<Player> {
 		this.name = name;
 		int key = (int) (Math.random() * 3);
 		if (key == 0) {
-			this.bat = BattingStat.PLAYED;
+			this.bat = BattingStatus.PLAYED;
 			this.run = (int) (Math.random() * 100);
 		} else if (key == 1)
-			this.bat = BattingStat.NYP;
+			this.bat = BattingStatus.NYP;
 		else if (playing <= 2) {
-			this.bat = BattingStat.PLAYING;
+			this.bat = BattingStatus.PLAYING;
 			this.run = (int) (Math.random() * 100);
 			playing++;
 		} else {
-			this.bat = BattingStat.NYP;
+			this.bat = BattingStatus.NYP;
 		}
 	}
 
@@ -67,14 +67,14 @@ public class Player implements Comparable<Player> {
 	/**
 	 * @return the bat
 	 */
-	public BattingStat getBat() {
+	public BattingStatus getBat() {
 		return bat;
 	}
 
 	/**
 	 * @param bat the bat to set
 	 */
-	public void setBat(BattingStat bat) {
+	public void setBat(BattingStatus bat) {
 		this.bat = bat;
 	}
 

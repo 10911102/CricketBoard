@@ -105,7 +105,7 @@ public class Team implements Comparable<Team>{
 	public int totalWickets() {
 		int total=0;
 		for(Player p:players) {
-			if(p.getBat()==BattingStat.PLAYED) {
+			if(p.getBat()==BattingStatus.PLAYED) {
 				total++;
 			}
 		}

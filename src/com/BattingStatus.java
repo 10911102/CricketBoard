@@ -1,13 +1,13 @@
 package com;
 
-public enum BattingStat {
+public enum BattingStatus {
 	PLAYED("Played and Out"),
 	PLAYING("Currently playing"),
 	NYP("Not Yet Played");
 
 	private String description;
 
-	BattingStat(String string) {
+	BattingStatus(String string) {
 		this.description = string;
 	}
 

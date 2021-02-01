@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.TreeSet;
 
 /**
- * Utility class for Cricket Team System
+ * Utility class for Cricket Team System to add or show or search teams and
+ * players in system
  * 
  * @author swapnilu
  *
@@ -17,15 +18,15 @@ public class CricketBoard {
 	private static List<Team> teams = new ArrayList<Team>();
 
 	/**
-	 * Add new team
+	 * Appends the new team object to teams list with players
 	 * 
-	 * @param name    for new team
-	 * @param players <a href="https://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html">TreeSet</a> of players
-	 * @return true if new team created successfully
+	 * @param teamName Country name
+	 * @param players  collection of players belongs to Country
+	
 	 */
-	public static boolean addTeam(String name, TreeSet<Player> players) {
-		Team t = new Team(name, players);
-		teams.add(t);
+	public static boolean addTeam(String teamName, TreeSet<Player> players) {
+		Team team = new Team(teamName, players);
+		teams.add(team);
 		Player.setPlaying(1);
 		return true;
 	}
@@ -53,7 +54,7 @@ public class CricketBoard {
 	/**
 	 * Add player in existing set of players
 	 * 
-	 * @param players existing <a href="https://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html">TreeSet</a> of players
+	 * @param players existing Set of players
 	 * @param player  new object to add in set
 	 * @return true if new player added successfully
 	 */
@@ -97,13 +98,21 @@ public class CricketBoard {
 
 		};
 		List<Team> t1 = teams;
-		int count = 0;
+		
 		Collections.sort(t1, com);
 		System.out.println("Name of Teams Sorted By Date");
-		for (Team to : t1) {
-			System.out.println(++count + ".  " + to.getTeamName());
-		}
+		showTeams(t1);
 
+	}
+	/**
+	 * print given list
+	 * @param list collection of Team class
+	 */
+	public static void showTeams(List<Team> list) {
+		int count = 0;
+		for (Team team : list) {
+			System.out.println(++count + ".  " + team.getTeamName());
+		}
 	}
 
 	/**
@@ -178,17 +187,17 @@ public class CricketBoard {
 	/**
 	 * shows the given string is Team or Player
 	 * 
-	 * @param team String to search name
+	 * @param string name of the team or player
 	 */
-	public static void search(String team) {
+	public static void search(String string) {
 		for (Team t : teams) {
-			if (t.getTeamName().equalsIgnoreCase(team)) {
-				System.out.println("Team " + team + " found.");
+			if (t.getTeamName().equalsIgnoreCase(string)) {
+				System.out.println("Team " + string + " found.");
 				break;
 			} else {
-				Player p = new Player(team);
+				Player p = new Player(string);
 				if (t.getPlayers().contains(p)) {
-					System.out.println("Player " + team + " Found in team " + t.getTeamName());
+					System.out.println("Player " + string + " Found in team " + t.getTeamName());
 					break;
 				}
 				System.out.println("Try another name!!");
@@ -205,6 +214,7 @@ public class CricketBoard {
 	public static int getRuns(String team) {
 		return searchTeam(team).totalRuns();
 	}
+
 	/**
 	 * Total Wickets gone of team
 	 * 
@@ -214,18 +224,19 @@ public class CricketBoard {
 	public static int getWickets(String team) {
 		return searchTeam(team).totalWickets();
 	}
-	
+
 	/**
-	 * Shows the match result 
+	 * Shows the match result
+	 * 
 	 * @param team1 first team name
 	 * @param team2 second team name
 	 */
-	public static void matchResult(String team1,String team2) {
+	public static void matchResult(String team1, String team2) {
 		if (getRuns(team1) < getRuns(team2)) {
-			System.out.println(team2+" won by " + (getRuns(team2) - getRuns(team1)) + " runs");
+			System.out.println(team2 + " won by " + (getRuns(team2) - getRuns(team1)) + " runs");
 		} else {
-			System.out.println(team1+" won by " + (getRuns(team1) - getRuns(team2)) + " runs");
+			System.out.println(team1 + " won by " + (getRuns(team1) - getRuns(team2)) + " runs");
 		}
 	}
-	
+
 }
