@@ -4,11 +4,11 @@ import java.util.Calendar;
 import java.util.TreeSet;
 
 public class Team implements Comparable<Team>{
-	private String teamName;
+	private Country teamName;
 	private TreeSet<Player> players;
 	private Calendar date;
 
-	public Team(String teamName, TreeSet<Player> players) {
+	public Team(Country teamName, TreeSet<Player> players) {
 		this.teamName = teamName;
 		this.players = players;
 		this.date = Calendar.getInstance();
@@ -19,7 +19,7 @@ public class Team implements Comparable<Team>{
 		this.date = date;
 	}
 
-	public Team(String team) {
+	public Team(Country team) {
 		this.teamName = team;
 	}
 
@@ -54,14 +54,14 @@ public class Team implements Comparable<Team>{
 	/**
 	 * @return the teamName
 	 */
-	public String getTeamName() {
+	public Country getTeamName() {
 		return teamName;
 	}
 
 	/**
 	 * @param teamName the teamName to set
 	 */
-	public void setTeamName(String teamName) {
+	public void setTeamName(Country teamName) {
 		this.teamName = teamName;
 	}
 

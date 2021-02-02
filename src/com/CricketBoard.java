@@ -16,15 +16,16 @@ import java.util.TreeSet;
  */
 public class CricketBoard {
 	private static List<Team> teams = new ArrayList<Team>();
+	private static List<Match> matches = new ArrayList<Match>();
 
 	/**
 	 * Appends the new team object to teams list with players
 	 * 
 	 * @param teamName Country name
 	 * @param players  collection of players belongs to Country
-	
+	 * 
 	 */
-	public static boolean addTeam(String teamName, TreeSet<Player> players) {
+	public static boolean addTeam(Country teamName, TreeSet<Player> players) {
 		Team team = new Team(teamName, players);
 		teams.add(team);
 		Player.setPlaying(1);
@@ -38,11 +39,11 @@ public class CricketBoard {
 	 * @param team   name of the team
 	 * @return true if new player added successfully
 	 */
-	public static boolean addPlayer(Player player, String team) {
+	public static boolean addPlayer(Player player, Country team) {
 		// Team team1=new Team(team);
 		boolean flag = false;
 		for (Team t : teams) {
-			if (t.getTeamName().equals(team)) {
+			if (t.getTeamName().toString().equalsIgnoreCase(team.toString())) {
 				t.getPlayers().add(player);
 				flag = true;
 				break;
@@ -98,14 +99,16 @@ public class CricketBoard {
 
 		};
 		List<Team> t1 = teams;
-		
+
 		Collections.sort(t1, com);
 		System.out.println("Name of Teams Sorted By Date");
 		showTeams(t1);
 
 	}
+
 	/**
 	 * print given list
+	 * 
 	 * @param list collection of Team class
 	 */
 	public static void showTeams(List<Team> list) {
@@ -157,7 +160,7 @@ public class CricketBoard {
 	 */
 	public static Team searchTeam(String string) {
 		for (Team t : teams) {
-			if (t.getTeamName().equalsIgnoreCase(string)) {
+			if (t.getTeamName().toString().equalsIgnoreCase(string)) {
 				return t;
 			}
 		}
@@ -191,7 +194,7 @@ public class CricketBoard {
 	 */
 	public static void search(String string) {
 		for (Team t : teams) {
-			if (t.getTeamName().equalsIgnoreCase(string)) {
+			if (t.getTeamName().toString().equalsIgnoreCase(string)) {
 				System.out.println("Team " + string + " found.");
 				break;
 			} else {
@@ -222,7 +225,7 @@ public class CricketBoard {
 	 * @return total wickets
 	 */
 	public static int getWickets(String team) {
-		return searchTeam(team).totalWickets();
+		return searchTeam(team.toString()).totalWickets();
 	}
 
 	/**
@@ -231,12 +234,21 @@ public class CricketBoard {
 	 * @param team1 first team name
 	 * @param team2 second team name
 	 */
-	public static void matchResult(String team1, String team2) {
-		if (getRuns(team1) < getRuns(team2)) {
-			System.out.println(team2 + " won by " + (getRuns(team2) - getRuns(team1)) + " runs");
-		} else {
-			System.out.println(team1 + " won by " + (getRuns(team1) - getRuns(team2)) + " runs");
-		}
+	public static String matchResult(Country team1, Country team2) {
+		Match match =new Match(team1.toString(), team2.toString());
+		for(Player player : searchTeam(team1.toString()).getPlayers())
+			player.randomInit();
+		for(Player player : searchTeam(team2.toString()).getPlayers())
+			player.randomInit();
+		matches.add(match);
+		return Match.result(match);
+	}
+
+	public static void showHistory() {
+		System.out.println("  Match between             Runs by   Runs by           Wining");
+		System.out.println("Team1        Team2          Team1     Team2              Team");
+		for (Match match : matches)
+			System.out.println(match+Match.result(match));
 	}
 
 }

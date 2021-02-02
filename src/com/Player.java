@@ -16,19 +16,7 @@ public class Player implements Comparable<Player> {
 
 	public Player(String name) {
 		this.name = name;
-		int key = (int) (Math.random() * 3);
-		if (key == 0) {
-			this.bat = BattingStatus.PLAYED;
-			this.run = (int) (Math.random() * 100);
-		} else if (key == 1)
-			this.bat = BattingStatus.NYP;
-		else if (playing <= 2) {
-			this.bat = BattingStatus.PLAYING;
-			this.run = (int) (Math.random() * 100);
-			playing++;
-		} else {
-			this.bat = BattingStatus.NYP;
-		}
+		this.randomInit();
 	}
 
 	public Player(String name, int run) {
@@ -99,5 +87,19 @@ public class Player implements Comparable<Player> {
 	public String toString() {
 		return name+" Runs: "+this.run;
 	}
-
+	public void randomInit() {
+		int key = (int) (Math.random() * 3);
+		if (key == 0) {
+			this.bat = BattingStatus.PLAYED;
+			this.run = (int) (Math.random() * 100);
+		} else if (key == 1)
+			this.bat = BattingStatus.NYP;
+		else if (playing <= 2) {
+			this.bat = BattingStatus.PLAYING;
+			this.run = (int) (Math.random() * 100);
+			playing++;
+		} else {
+			this.bat = BattingStatus.NYP;
+		}
+	}
 }
