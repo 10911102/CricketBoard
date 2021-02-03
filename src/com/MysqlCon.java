@@ -9,6 +9,8 @@ import java.sql.DriverManager;
  *
  */
 public class MysqlCon {
+	private MysqlCon() {
+	}
 	/**
 	 * Get Connection
 	 * @return Connection object for database connection

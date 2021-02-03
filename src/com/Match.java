@@ -17,6 +17,19 @@ public class Match {
 		this.team2Wickets = CricketBoard.getWickets(team2);
 	}
 	
+	
+
+	public Match(String team1, String team2, int team1Runs, int team2Runs, int team1Wickets, int team2Wickets) {
+		this.team1 = CricketBoard.searchTeam(team1);
+		this.team2 = CricketBoard.searchTeam(team2);
+		this.team1Runs = team1Runs;
+		this.team2Runs = team2Runs;
+		this.team1Wickets = team1Wickets;
+		this.team2Wickets = team2Wickets;
+	}
+
+
+
 	/**
 	 * @return the team1
 	 */
