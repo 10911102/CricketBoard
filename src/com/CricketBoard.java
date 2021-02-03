@@ -236,6 +236,7 @@ public class CricketBoard {
 	 */
 	public static String matchResult(Country team1, Country team2) {
 		Match match =new Match(team1.toString(), team2.toString());
+		DataOperations.insertMatchTable(match);
 		for(Player player : searchTeam(team1.toString()).getPlayers())
 			player.randomInit();
 		for(Player player : searchTeam(team2.toString()).getPlayers())

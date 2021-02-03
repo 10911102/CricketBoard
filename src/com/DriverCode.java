@@ -34,6 +34,11 @@ public class DriverCode {
 		CricketBoard.addTeam(Country.AUSTRALIA, players1);
 		// adding new player in exiting team
 		CricketBoard.addPlayer(new Player("Harbhajan"), Country.INDIA);
+		//testing db
+		//DataOperations.createPlayerTable();
+		//DataOperations.createMatchTable();
+		
+		
 		int key = 0;
 		int switchKey;
 		String str;

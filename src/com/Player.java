@@ -17,6 +17,7 @@ public class Player implements Comparable<Player> {
 	public Player(String name) {
 		this.name = name;
 		this.randomInit();
+		//DataOperations.insertIntoPlayer(this);
 	}
 
 	public Player(String name, int run) {
