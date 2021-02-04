@@ -1,4 +1,4 @@
-package com;
+package com.cricket;
 
 import java.util.Calendar;
 import java.util.TreeSet;

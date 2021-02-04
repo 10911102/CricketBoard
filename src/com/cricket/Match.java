@@ -1,27 +1,27 @@
-package com;
+package com.cricket;
 
 public class Match {
-	private Team team1;
-	private Team team2;
+	private Team2 team1;
+	private Team2 team2;
 	private int team1Runs;
 	private int team2Runs;
 	private int team1Wickets;
 	private int team2Wickets;
 	
 	public Match(String team1, String team2) {
-		this.team1 = CricketBoard.searchTeam(team1);
-		this.team2 = CricketBoard.searchTeam(team2);
-		this.team1Runs = CricketBoard.getRuns(team1);
-		this.team2Runs = CricketBoard.getRuns(team2);
-		this.team1Wickets = CricketBoard.getWickets(team1);
-		this.team2Wickets = CricketBoard.getWickets(team2);
+		this.team1 = CricketBoard2.searchTeam(team1);
+		this.team2 = CricketBoard2.searchTeam(team2);
+		this.team1Runs = CricketBoard2.getRuns(team1);
+		this.team2Runs = CricketBoard2.getRuns(team2);
+		this.team1Wickets = CricketBoard2.getWickets(team1);
+		this.team2Wickets = CricketBoard2.getWickets(team2);
 	}
 	
 	
 
 	public Match(String team1, String team2, int team1Runs, int team2Runs, int team1Wickets, int team2Wickets) {
-		this.team1 = CricketBoard.searchTeam(team1);
-		this.team2 = CricketBoard.searchTeam(team2);
+		this.team1 = CricketBoard2.searchTeam(team1);
+		this.team2 = CricketBoard2.searchTeam(team2);
 		this.team1Runs = team1Runs;
 		this.team2Runs = team2Runs;
 		this.team1Wickets = team1Wickets;
@@ -33,25 +33,25 @@ public class Match {
 	/**
 	 * @return the team1
 	 */
-	public Team getTeam1() {
+	public Team2 getTeam1() {
 		return team1;
 	}
 	/**
 	 * @param team1 the team1 to set
 	 */
-	public void setTeam1(Team team1) {
+	public void setTeam1(Team2 team1) {
 		this.team1 = team1;
 	}
 	/**
 	 * @return the team2
 	 */
-	public Team getTeam2() {
+	public Team2 getTeam2() {
 		return team2;
 	}
 	/**
 	 * @param team2 the team2 to set
 	 */
-	public void setTeam2(Team team2) {
+	public void setTeam2(Team2 team2) {
 		this.team2 = team2;
 	}
 	/**
@@ -109,14 +109,14 @@ public class Match {
 
 	@Override
 	public String toString() {
-		return  team1.getTeamName()+"      "+team2.getTeamName()+"         " + team1Runs + "       " + team2Runs+"     ";
+		return  team1.getName()+"      "+team2.getName()+"         " + team1Runs + "       " + team2Runs+"     ";
 	}
 	public static String result(Match match) {
 		String str;
 		if (match.team1Runs < match.team2Runs) {
-			str = (match.team2.getTeamName() + " won by " + (match.team2Runs - match.team1Runs) + " runs");
+			str = (match.team2.getName() + " won by " + (match.team2Runs - match.team1Runs) + " runs");
 		} else {
-			str = (match.team1.getTeamName() + " won by " + (match.team1Runs - match.team2Runs) + " runs");
+			str = (match.team1.getName() + " won by " + (match.team1Runs - match.team2Runs) + " runs");
 		}
 		return str;
 	}

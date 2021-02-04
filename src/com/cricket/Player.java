@@ -1,32 +1,27 @@
-package com;
+package com.cricket;
 
 /**
  * @author swapnilu
  *
  */
-public class Player2 implements Comparable<Player2> {
-	private String playerName;
+public class Player implements Comparable<Player> {
+	private String name;
 	private int run;
-	private String playsFor;
 	private BattingStatus bat;
 	private static int playing = 1;
 
 	public static void setPlaying(int playing) {
-		Player2.playing = playing;
+		Player.playing = playing;
 	}
 
-	public Player2(String name) {
-		this.playerName = name;
+	public Player(String name) {
+		this.name = name;
 		this.randomInit();
-	}
-	public Player2(String playerName, String teamName) {
-		this.playerName = playerName;
-		this.playsFor = teamName;
-		this.randomInit();
+		//DataOperations.insertIntoPlayer(this);
 	}
 
-	public Player2(String name, int run) {
-		this.playerName = name;
+	public Player(String name, int run) {
+		this.name = name;
 		this.run = run;
 	}
 
@@ -34,14 +29,14 @@ public class Player2 implements Comparable<Player2> {
 	 * @return the name
 	 */
 	public String getName() {
-		return playerName;
+		return name;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
-		this.playerName = name;
+		this.name = name;
 	}
 
 	/**
@@ -74,24 +69,24 @@ public class Player2 implements Comparable<Player2> {
 
 	@Override
 	public int hashCode() {
-		return playerName.hashCode();
+		return name.hashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null && !(obj instanceof Player2))
+		if (obj == null && !(obj instanceof Player))
 			return false;
-		return this.playerName.equals(((Player2) obj).playerName);
+		return this.name.equals(((Player) obj).name);
 	}
 
 	@Override
-	public int compareTo(Player2 o) {
-		return this.playerName.compareTo(o.playerName);
+	public int compareTo(Player o) {
+		return this.name.compareTo(o.name);
 	}
 
 	@Override
 	public String toString() {
-		return playerName+" Runs: "+this.run;
+		return name+" Runs: "+this.run;
 	}
 	public void randomInit() {
 		int key = (int) (Math.random() * 3);
@@ -107,19 +102,5 @@ public class Player2 implements Comparable<Player2> {
 		} else {
 			this.bat = BattingStatus.NYP;
 		}
-	}
-
-	/**
-	 * @return the playsFor
-	 */
-	public String getPlaysFor() {
-		return playsFor;
-	}
-
-	/**
-	 * @param playsFor the playsFor to set
-	 */
-	public void setPlaysFor(String playsFor) {
-		this.playsFor = playsFor;
 	}
 }

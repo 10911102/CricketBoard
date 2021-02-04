@@ -1,28 +1,34 @@
-package com;
+package com.cricket;
 
 /**
  * @author swapnilu
  *
  */
-public class Player implements Comparable<Player> {
+public class Player2 implements Comparable<Player2> {
 	private String name;
 	private int run;
+	private String playsFor;
 	private BattingStatus bat;
 	private static int playing = 1;
 
 	public static void setPlaying(int playing) {
-		Player.playing = playing;
+		Player2.playing = playing;
 	}
 
-	public Player(String name) {
+	public Player2(String name) {
 		this.name = name;
 		this.randomInit();
-		//DataOperations.insertIntoPlayer(this);
+	}
+	public Player2(String playerName, String teamName) {
+		this.name = playerName;
+		this.playsFor = teamName;
+		this.randomInit();
 	}
 
-	public Player(String name, int run) {
+	public Player2(String name, int run,String teamName) {
 		this.name = name;
 		this.run = run;
+		this.playsFor=teamName;
 	}
 
 	/**
@@ -74,13 +80,13 @@ public class Player implements Comparable<Player> {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null && !(obj instanceof Player))
+		if (obj == null && !(obj instanceof Player2))
 			return false;
-		return this.name.equals(((Player) obj).name);
+		return this.name.equals(((Player2) obj).name);
 	}
 
 	@Override
-	public int compareTo(Player o) {
+	public int compareTo(Player2 o) {
 		return this.name.compareTo(o.name);
 	}
 
@@ -102,5 +108,19 @@ public class Player implements Comparable<Player> {
 		} else {
 			this.bat = BattingStatus.NYP;
 		}
+	}
+
+	/**
+	 * @return the playsFor
+	 */
+	public String getPlaysFor() {
+		return playsFor;
+	}
+
+	/**
+	 * @param playsFor the playsFor to set
+	 */
+	public void setPlaysFor(String playsFor) {
+		this.playsFor = playsFor;
 	}
 }

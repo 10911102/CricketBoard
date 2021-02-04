@@ -1,4 +1,4 @@
-package com;
+package com.cricket;
 
 public enum Country {
 	INDIA,
