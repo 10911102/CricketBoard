@@ -21,8 +21,8 @@ public class PlayerDataOperations {
 		try {
 			con = MysqlCon.getConnection();
 			stmt = con.createStatement();
-			sql = "CREATE TABLE PLAYER " + "(id INTEGER not NULL AUTO_INCREMENT, " + " playerName VARCHAR(20), "
-					+ " runs INTEGER, " + " playsFor VARCHAR(20), " + " PRIMARY KEY ( id ))";
+			sql = "CREATE TABLE  IF NOT EXISTS PLAYER " + "(id INTEGER IDENTITY PRIMARY KEY , " + " playerName VARCHAR(20), "
+					+ " runs INTEGER, " + " playsFor VARCHAR(20))";
 			stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {

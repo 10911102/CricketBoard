@@ -18,7 +18,8 @@ public class MysqlCon {
 	 */
 	public static Connection getConnection() throws Exception {
 			//Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/swapnil","root","root");
+//			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/swapnil","root","root");
+			Connection con=DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/","sa","");
 		return con;
 	}
 

@@ -30,9 +30,9 @@ public class MatchDataOperations {
 		try {
 			con = MysqlCon.getConnection();
 			stmt = con.createStatement();
-			sql = "CREATE TABLE MATCH_HISTORY " + "(id INTEGER not NULL AUTO_INCREMENT, " + " Team1 VARCHAR(20), "
+			sql = "CREATE TABLE IF NOT EXISTS MATCH_HISTORY " + "(id INTEGER IDENTITY PRIMARY KEY , " + " Team1 VARCHAR(20), "
 					+ " Team2 VARCHAR(20), " + "Team1Runs INTEGER," + "Team2Runs INTEGER," + "Team1Wickets INTEGER,"
-					+ "Team2Wickets INTEGER," + " PRIMARY KEY ( id ))";
+					+ "Team2Wickets INTEGER)";
 			stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {

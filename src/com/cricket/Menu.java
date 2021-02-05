@@ -25,7 +25,7 @@ public class Menu {
 				case 2:
 					System.out.println("Enter Team Name");
 					str = sc.nextLine();
-					if (CricketBoard2.searchTeam(str) != null)
+					if (CricketBoard2.searchTeam(str) == null)
 						CricketBoard2.addTeam(str);
 					else
 						System.out.println("Already exist");

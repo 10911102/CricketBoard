@@ -30,8 +30,8 @@ public class TeamDataOperations {
 		try {
 			con = MysqlCon.getConnection();
 			stmt = con.createStatement();
-			sql = "CREATE TABLE Team " + "(id INTEGER not NULL AUTO_INCREMENT, " + " tamName VARCHAR(20), "
-					 + " date Date, " + " PRIMARY KEY ( id ))";
+			sql = "CREATE TABLE IF NOT EXISTS Team " + "(id INTEGER IDENTITY  PRIMARY KEY , " + " tamName VARCHAR(20), "
+					 + " date Date)";
 			stmt.executeUpdate(sql);
 			con.close();
 		} catch (Exception e) {
